@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: "xcodeleon"
+      changes:
+        - createTable:
+            tableName: "users"
+            columns:
+              - column:
+                  name: "id"
+                  type: "uuid"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: "created_at"
+                  type: "timestamp"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "login"
+                  type: "varchar(255)"
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: "password_hash"
+                  type: "varchar(255)"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "is_deleted"
+                  type: "boolean"
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: "users"

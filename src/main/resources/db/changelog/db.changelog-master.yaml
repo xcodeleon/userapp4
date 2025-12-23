@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: scripts/migration-1.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: scripts/migration-2.sql
+      relativeToChangelogFile: true

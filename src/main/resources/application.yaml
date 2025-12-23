@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: UserApp4
+  datasource:
+    password: ${DATABASE_PASSWORD:123qwe}
+    username: ${DATABASE_USERNAME:admin}
+    url: jdbc:postgresql://${DATABASE_URL:192.168.1.107:5432}/${DATABASE_NAME:userapp_db}
+    hikari:
+      maximum-pool-size: 10
+      max-lifetime: 90000
+      pool-name: auth-pool
+      driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus, heapdump, threaddump
